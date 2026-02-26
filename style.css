@@ -1,33 +1,30 @@
 :root {
-    --primary-color: #333;
-    --secondary-color: #f4f4f4;
-    --accent-color: #e44d26;
-    --text-color: #333;
-    --background-color: #fff;
-    --font-family: 'Helvetica Neue', sans-serif;
+    --primary-color: #1a1a1a; /* Near-black for main background */
+    --secondary-color: #2a2a2a; /* Slightly lighter shade for cards/headers */
+    --accent-color: #39ff14;  /* Vibrant Neon Green */
+    --text-color: #f0f0f0;    /* Off-white for readability */
+    --shadow-color: rgba(57, 255, 20, 0.2); /* Shadow color for the glow effect */
+    --font-family: 'Poppins', sans-serif;
 }
 
 body {
     font-family: var(--font-family);
     margin: 0;
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     color: var(--text-color);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-decoration: none;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY2IiIiPj4+JiYl8fHySkpKSkpPOzs7ExMTNzc3U1NTh4eHi4uKqqqqZmZnKykoAAAAASElEQVR42tVRBwEAIACD8qL+5/x7x4LDBW0gUjMJMY2kNp1/v3s2bROAF3Yk+sR2t3e3e4/vfn/p5/gmE8Ah85g/Ci8A2gTgj3cAS2rqK1eAYo/hTwAaAOc/ANdj8v0AAAAASUVORK5CYII=');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
-    background-color: var(--secondary-color);
+    background-color: rgba(26, 26, 26, 0.8);
     padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -36,74 +33,106 @@ nav {
     align-items: center;
 }
 
-nav ul {
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+.nav-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-grow: 1;
-    justify-content: center;
+    gap: 2rem;
 }
 
-nav ul li {
-    margin: 0 1.5rem;
-}
-
-nav ul li a {
+.nav-links a {
     text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
-    transition: color 0.3s;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
-nav ul li a:hover {
+.nav-links a:hover {
     color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
-.cart-icon {
-    position: relative;
+.nav-icons img {
     cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+    filter: invert(1);
 }
 
-.cart-icon i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-}
-
-#cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: var(--accent-color);
-    color: white;
-    border-radius: 50%;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    font-weight: bold;
+.nav-icons img:hover {
+    transform: scale(1.1);
+    filter: invert(1) drop-shadow(0 0 5px var(--accent-color));
 }
 
 .hero {
     text-align: center;
-    padding: 4rem 2rem;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    padding: 6rem 2rem;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin: 0;
+    font-size: 3.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+.btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.products h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
     padding: 2rem;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
+/* This is a placeholder style for the product cards we will create */
+.product-card {
     background-color: var(--secondary-color);
-    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.23);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.25);
+}
+
+.modal {
+    /* Styles for modal will be updated later */
 }

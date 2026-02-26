@@ -4,31 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Clothiers</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #f2f2f2;
-            --accent-color: #ff4d4d;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --font-family: 'Poppins', sans-serif;
-        }
-        body {
-            font-family: var(--font-family);
-            margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        /* Other styles remain the same */
-    </style>
-    <!-- CORRECTION: Use the 'compat' version of the Firebase SDKs -->
+
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
     <script>
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             projectId: "proj-1-ecomm",
             appId: "1:942830064057:web:01c86821c995fa520fe668",
@@ -37,11 +24,12 @@
             authDomain: "proj-1-ecomm.firebaseapp.com",
             messagingSenderId: "942830064057"
         };
-
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
     </script>
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
