@@ -1,0 +1,8 @@
+# Ignore sensitive configuration files
+config.js
+
+# Ignore general development files
+.DS_Store
+
+# Ignore node_modules directory
+node_modules/

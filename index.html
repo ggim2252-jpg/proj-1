@@ -14,16 +14,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     
-    <!-- Firebase Configuration -->
+    <!-- Firebase Configuration from external file -->
+    <script src="config.js"></script>
     <script>
-        const firebaseConfig = {
-            projectId: "proj-1-ecomm",
-            appId: "1:942830064057:web:01c86821c995fa520fe668",
-            storageBucket: "proj-1-ecomm.firebasestorage.app",
-            apiKey: "AIzaSyBvE6PKE_-5StUSDHWp2Si67yiGS7C7AOQ",
-            authDomain: "proj-1-ecomm.firebaseapp.com",
-            messagingSenderId: "942830064057"
-        };
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
