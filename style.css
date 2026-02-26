@@ -25,6 +25,9 @@ header {
     background-color: var(--secondary-color);
     padding: 1rem 2rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav {
@@ -38,15 +41,44 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 nav ul li {
-    margin-left: 2rem;
+    margin: 0 1.5rem;
 }
 
 nav ul li a {
     text-decoration: none;
     color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
     font-weight: bold;
 }
 
