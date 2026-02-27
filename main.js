@@ -3,13 +3,19 @@ import { products } from './products.js';
 const productGrid = document.querySelector('.product-grid');
 const cartBadge = document.querySelector('.cart-badge');
 const cartTotalHeader = document.getElementById('cart-total-header');
+const cartModal = document.getElementById('cart-modal');
+const cartIcon = document.querySelector('.cart-status-header');
+const closeModal = document.querySelector('.close-modal');
+const cartItemsContainer = document.getElementById('cart-items-container');
+const modalCartTotal = document.getElementById('modal-cart-total');
+const searchIcon = document.querySelector('img[alt="Search"]');
 
 let cart = [];
 
-function renderProducts() {
+function renderProducts(filteredProducts = products) {
     if (!productGrid) return;
     productGrid.innerHTML = '';
-    products.forEach(product => {
+    filteredProducts.forEach(product => {
         const productCard = document.createElement('product-card');
         productCard.dataset.productId = product.id;
         productCard.setAttribute('name', product.name);
@@ -22,20 +28,96 @@ function renderProducts() {
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        cart.push(product);
+        cart.push({ ...product, cartId: Date.now() }); // Unique cartId for removal
         updateCartStatus();
-        console.log('Cart:', cart);
+        renderCartItems();
     }
+}
+
+function removeFromCart(cartId) {
+    cart = cart.filter(item => item.cartId !== cartId);
+    updateCartStatus();
+    renderCartItems();
 }
 
 function updateCartStatus() {
     if (cartBadge) {
         cartBadge.textContent = cart.length;
     }
-    if (cartTotalHeader) {
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        cartTotalHeader.textContent = `$${total.toFixed(2)}`;
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const formattedTotal = `$${total.toFixed(2)}`;
+    
+    if (cartTotalHeader) cartTotalHeader.textContent = formattedTotal;
+    if (modalCartTotal) modalCartTotal.textContent = formattedTotal;
+}
+
+function renderCartItems() {
+    if (!cartItemsContainer) return;
+    cartItemsContainer.innerHTML = '';
+    
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Your cart is empty.</p>';
+        return;
     }
+
+    cart.forEach(item => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+                <h4>${item.name}</h4>
+                <p>$${item.price.toFixed(2)}</p>
+            </div>
+            <button class="remove-item" data-cart-id="${item.cartId}">Remove</button>
+        `;
+        cartItemsContainer.appendChild(itemEl);
+    });
+
+    document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const cartId = parseInt(e.target.dataset.cartId);
+            removeFromCart(cartId);
+        });
+    });
+}
+
+// --- Event Listeners ---
+
+if (cartIcon) {
+    cartIcon.addEventListener('click', () => {
+        cartModal.style.display = 'block';
+        renderCartItems();
+    });
+}
+
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        cartModal.style.display = 'none';
+    }
+});
+
+// Basic Search Functionality
+if (searchIcon) {
+    searchIcon.addEventListener('click', () => {
+        const query = prompt("Search for products:");
+        if (query !== null) {
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query.toLowerCase())
+            );
+            renderProducts(filtered);
+            if (filtered.length === 0) {
+                alert("No products found matching your search.");
+                renderProducts(products);
+            }
+        }
+    });
 }
 
 // --- Web Components ---
@@ -66,7 +148,7 @@ class ProductCard extends HTMLElement {
                 }
                 .product-card:hover {
                     transform: translateY(-10px);
-                    border-color: var(--accent-color);
+                    border-color: var(--accent-color, #25ff14);
                     box-shadow: 0 20px 40px rgba(37, 255, 20, 0.15);
                 }
                 .image-container {
@@ -90,22 +172,22 @@ class ProductCard extends HTMLElement {
                     flex-grow: 1;
                 }
                 h3 {
-                    font-family: var(--font-secondary);
+                    font-family: 'Montserrat', sans-serif;
                     font-size: 1.1rem;
                     margin: 0 0 0.5rem 0;
                     color: #fff;
                     letter-spacing: 0.5px;
                 }
                 p {
-                    color: var(--accent-color);
+                    color: var(--accent-color, #25ff14);
                     font-weight: 800;
                     font-size: 1.25rem;
                     margin: 0 0 1.5rem 0;
                 }
                 button {
                     background-color: transparent;
-                    color: var(--accent-color);
-                    border: 2px solid var(--accent-color);
+                    color: var(--accent-color, #25ff14);
+                    border: 2px solid var(--accent-color, #25ff14);
                     width: 100%;
                     padding: 0.8rem;
                     border-radius: 8px;
@@ -117,7 +199,7 @@ class ProductCard extends HTMLElement {
                     margin-top: auto;
                 }
                 button:hover {
-                    background-color: var(--accent-color);
+                    background-color: var(--accent-color, #25ff14);
                     color: #000;
                     box-shadow: 0 0 15px rgba(37, 255, 20, 0.4);
                 }
@@ -135,7 +217,7 @@ class ProductCard extends HTMLElement {
         `;
 
         this.shadowRoot.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-            const productId = this.getAttribute('id') || this.dataset.productId;
+            const productId = this.dataset.productId || this.getAttribute('data-product-id');
             addToCart(productId);
         });
     }
@@ -208,5 +290,5 @@ customElements.define('affiliate-form', AffiliateForm);
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
-    updateCartStatus(); // Initial cart status update
+    updateCartStatus();
 });
