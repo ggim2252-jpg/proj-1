@@ -3,7 +3,7 @@ export const products = [
         id: 'p1',
         name: 'Midnight Bomber Jacket',
         price: 75.00,
-        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p2',
@@ -21,7 +21,7 @@ export const products = [
         id: 'p4',
         name: 'Distressed Slim Jeans',
         price: 55.00,
-        image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p5',
@@ -33,13 +33,13 @@ export const products = [
         id: 'p6',
         name: 'Essential Oversized Tee',
         price: 50.00,
-        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p7',
         name: 'Retro Sport Jacket',
         price: 68.00,
-        image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1604644401890-0bd678c83788?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p8',
@@ -51,7 +51,7 @@ export const products = [
         id: 'p9',
         name: 'Vintage Denim Shirt',
         price: 58.00,
-        image: 'https://images.unsplash.com/photo-1583903659975-a443b17a7f45?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p10',
