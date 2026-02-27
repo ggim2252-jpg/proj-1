@@ -1,19 +1,39 @@
 import { products } from './products.js';
 
 const productGrid = document.querySelector('.product-grid');
+const cartBadge = document.querySelector('.cart-badge');
+
+let cart = [];
 
 function renderProducts() {
     if (!productGrid) return;
     productGrid.innerHTML = '';
     products.forEach(product => {
         const productCard = document.createElement('product-card');
-        productCard.setAttribute('id', product.id);
+        productCard.dataset.productId = product.id; // Use dataset for easier access
         productCard.setAttribute('name', product.name);
         productCard.setAttribute('price', `$${product.price}`);
         productCard.setAttribute('image', product.image);
         productGrid.appendChild(productCard);
     });
 }
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+        cart.push(product);
+        updateCartBadge();
+        console.log('Cart:', cart); // For debugging
+    }
+}
+
+function updateCartBadge() {
+    if (cartBadge) {
+        cartBadge.textContent = cart.length;
+    }
+}
+
+// --- Web Components ---
 
 class ProductCard extends HTMLElement {
     constructor() {
@@ -76,7 +96,7 @@ class ProductCard extends HTMLElement {
                     font-weight: 700;
                     text-transform: uppercase;
                     transition: all 0.3s;
-                    margin-top: auto; /* Pushes button to the bottom */
+                    margin-top: auto;
                 }
                 button:hover {
                     background-color: var(--accent-color);
@@ -88,10 +108,15 @@ class ProductCard extends HTMLElement {
                 <div class="card-content">
                     <h3>${name}</h3>
                     <p>${price}</p>
-                    <button>View Details</button>
+                    <button class="add-to-cart-btn">Add to Cart</button>
                 </div>
             </div>
         `;
+
+        this.shadowRoot.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+            const productId = this.dataset.productId;
+            addToCart(productId);
+        });
     }
 }
 
@@ -155,9 +180,12 @@ class AffiliateForm extends HTMLElement {
     }
 }
 
+// --- Initialization ---
+
 customElements.define('product-card', ProductCard);
 customElements.define('affiliate-form', AffiliateForm);
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
+    updateCartBadge(); // Initial cart badge update
 });
