@@ -7,25 +7,27 @@ Modern Clothiers is a premium, framework-less web application designed for a mod
 ### Aesthetics
 - **Theme:** Dark Mode with Neon Green (`#25ff14`) accents.
 - **Typography:** 'Montserrat' for headings and 'Poppins' for body text.
-- **Visuals:** High-resolution product images from Unsplash, smooth hover animations, and glassmorphism headers.
+- **Visuals:** High-resolution product images, glassmorphism UI elements, and smooth animations.
 
 ### Components
 - **Navigation Bar:** 
     - Sticky header with links (Home, Shop, Inquiry, About, Contact).
-    - **Refined Search & Cart:** Features a magnifying glass icon next to a sleek cart status pill (count badge and total price).
+    - **Integrated Search & Cart:** Features a search icon and a sleek cart status pill (count and total price).
 - **Affiliate Inquiry Space:**
-    - Dedicated partnership section with a professional Formspree-powered inquiry form.
+    - Dedicated partnership section with a professional inquiry form.
+- **Customer Feedback (Disqus):**
+    - Integrated Disqus comment thread at the bottom of the page for community engagement.
 - **Enhanced Product Grid:**
-    - Custom `product-card` Web Components showcasing real clothing photos.
-    - Features include image zoom on hover and interactive "Add to Cart" buttons.
+    - Custom `product-card` Web Components with image zoom and interactive buttons.
 
 ## Technical Implementation
 - **Frontend:** HTML5, CSS3, Modern JavaScript (ES Modules, Custom Elements, Shadow DOM).
-- **Backend:** Firebase (Firestore integration ready).
-- **Forms:** Formspree for partnership message handling.
+- **External Integrations:**
+    - **Disqus:** For community comments and discussion.
+    - **Formspree:** For partnership inquiry form handling.
+    - **Icons8:** For clean iconography.
 
 ## Recent Changes (February 27, 2026)
-- **High-Quality Imagery:** Updated `products.js` with real Unsplash images for a professional look.
-- **Navigation Refinement:** Placed the magnifying glass icon and the cart status pill side-by-side in the header.
-- **UI/UX Polishing:** Improved `product-card` styling with better spacing, animations, and typography.
-- **GitHub Sync:** All latest changes pushed to the repository.
+- **Community Discussion:** Implemented Disqus comment system at the bottom of the page.
+- **UI/UX Polishing:** Refined the comments section styling to match the dark theme and neon accents.
+- **GitHub Sync:** Latest changes committed and pushed to the repository.
