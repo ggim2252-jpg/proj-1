@@ -2,6 +2,7 @@ import { products } from './products.js';
 
 const productGrid = document.querySelector('.product-grid');
 const cartBadge = document.querySelector('.cart-badge');
+const cartTotalHeader = document.getElementById('cart-total-header');
 
 let cart = [];
 
@@ -10,9 +11,9 @@ function renderProducts() {
     productGrid.innerHTML = '';
     products.forEach(product => {
         const productCard = document.createElement('product-card');
-        productCard.dataset.productId = product.id; // Use dataset for easier access
+        productCard.dataset.productId = product.id;
         productCard.setAttribute('name', product.name);
-        productCard.setAttribute('price', `$${product.price}`);
+        productCard.setAttribute('price', `$${product.price.toFixed(2)}`);
         productCard.setAttribute('image', product.image);
         productGrid.appendChild(productCard);
     });
@@ -22,14 +23,18 @@ function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
         cart.push(product);
-        updateCartBadge();
-        console.log('Cart:', cart); // For debugging
+        updateCartStatus();
+        console.log('Cart:', cart);
     }
 }
 
-function updateCartBadge() {
+function updateCartStatus() {
     if (cartBadge) {
         cartBadge.textContent = cart.length;
+    }
+    if (cartTotalHeader) {
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartTotalHeader.textContent = `$${total.toFixed(2)}`;
     }
 }
 
@@ -48,63 +53,79 @@ class ProductCard extends HTMLElement {
             <style>
                 :host { display: block; height: 100%; }
                 .product-card {
-                    background: #1f1f1f;
-                    border-radius: 10px;
+                    background: #111;
+                    border-radius: 15px;
                     overflow: hidden;
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                    transition: transform 0.3s, border-color 0.3s;
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     display: flex;
                     flex-direction: column;
                     height: 100%;
-                    border: 1px solid rgba(255,255,255,0.1);
+                    border: 1px solid rgba(255,255,255,0.05);
+                    position: relative;
                 }
                 .product-card:hover {
-                    transform: translateY(-5px);
+                    transform: translateY(-10px);
                     border-color: var(--accent-color);
+                    box-shadow: 0 20px 40px rgba(37, 255, 20, 0.15);
+                }
+                .image-container {
+                    width: 100%;
+                    height: 350px;
+                    overflow: hidden;
                 }
                 img {
                     width: 100%;
-                    height: 300px;
+                    height: 100%;
                     object-fit: cover;
+                    transition: transform 0.6s ease;
+                }
+                .product-card:hover img {
+                    transform: scale(1.1);
                 }
                 .card-content {
                     padding: 1.5rem;
-                    text-align: left;
-                    flex-grow: 1;
                     display: flex;
                     flex-direction: column;
+                    flex-grow: 1;
                 }
                 h3 {
-                    font-size: 1.2rem;
+                    font-family: var(--font-secondary);
+                    font-size: 1.1rem;
                     margin: 0 0 0.5rem 0;
-                    color: var(--secondary-color);
+                    color: #fff;
+                    letter-spacing: 0.5px;
                 }
                 p {
                     color: var(--accent-color);
-                    font-weight: bold;
-                    font-size: 1.1rem;
-                    margin: 0 0 1rem 0;
+                    font-weight: 800;
+                    font-size: 1.25rem;
+                    margin: 0 0 1.5rem 0;
                 }
                 button {
                     background-color: transparent;
                     color: var(--accent-color);
                     border: 2px solid var(--accent-color);
                     width: 100%;
-                    padding: 0.75rem;
-                    border-radius: 5px;
+                    padding: 0.8rem;
+                    border-radius: 8px;
                     cursor: pointer;
                     font-weight: 700;
                     text-transform: uppercase;
+                    letter-spacing: 1px;
                     transition: all 0.3s;
                     margin-top: auto;
                 }
                 button:hover {
                     background-color: var(--accent-color);
-                    color: var(--primary-color);
+                    color: #000;
+                    box-shadow: 0 0 15px rgba(37, 255, 20, 0.4);
                 }
             </style>
             <div class="product-card">
-                <img src="${imageSrc}" alt="${name}">
+                <div class="image-container">
+                    <img src="${imageSrc}" alt="${name}">
+                </div>
                 <div class="card-content">
                     <h3>${name}</h3>
                     <p>${price}</p>
@@ -114,7 +135,7 @@ class ProductCard extends HTMLElement {
         `;
 
         this.shadowRoot.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-            const productId = this.dataset.productId;
+            const productId = this.getAttribute('id') || this.dataset.productId;
             addToCart(productId);
         });
     }
@@ -187,5 +208,5 @@ customElements.define('affiliate-form', AffiliateForm);
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
-    updateCartBadge(); // Initial cart badge update
+    updateCartStatus(); // Initial cart status update
 });

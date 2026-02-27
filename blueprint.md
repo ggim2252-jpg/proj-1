@@ -1,31 +1,31 @@
 # Project Overview: Modern Clothiers
 
-Modern Clothiers is a bold and vivid framework-less web application designed for a premium clothing brand. It features a high-contrast aesthetic with neon green accents on a dark background.
+Modern Clothiers is a premium, framework-less web application designed for a modern clothing brand. It features a bold, high-contrast aesthetic with neon green accents on a dark background.
 
 ## Current Features & Design
 
 ### Aesthetics
-- **Theme:** Dark Mode with Neon Green (`#39ff14`) and Neon Pink (`#ff143c`) highlights.
-- **Typography:** Uses 'Montserrat' for headings and 'Poppins' for body text.
-- **Visuals:** High-quality imagery, glassmorphism navigation, and bold shadows.
+- **Theme:** Dark Mode with Neon Green (`#25ff14`) accents.
+- **Typography:** 'Montserrat' for headings and 'Poppins' for body text.
+- **Visuals:** High-resolution product images from Unsplash, smooth hover animations, and glassmorphism headers.
 
 ### Components
 - **Navigation Bar:** 
     - Sticky header with links (Home, Shop, Inquiry, About, Contact).
-    - **Header Cart Status:** Displays a cart icon with a count badge and the total price (e.g., $0.00) integrated into a sleek status pill.
+    - **Refined Search & Cart:** Features a magnifying glass icon next to a sleek cart status pill (count badge and total price).
 - **Affiliate Inquiry Space:**
-    - A dedicated section (`#affiliate`) for partnership proposals.
-    - Uses a custom `affiliate-form` Web Component.
-    - Integrated with Formspree (`https://formspree.io/f/mykdoonl`) for message handling.
-- **Product Grid:** Dynamically rendered product cards with "Add to Cart" functionality.
+    - Dedicated partnership section with a professional Formspree-powered inquiry form.
+- **Enhanced Product Grid:**
+    - Custom `product-card` Web Components showcasing real clothing photos.
+    - Features include image zoom on hover and interactive "Add to Cart" buttons.
 
 ## Technical Implementation
-- **Frontend:** HTML5, CSS3, Modern JavaScript (ES Modules, Custom Elements).
+- **Frontend:** HTML5, CSS3, Modern JavaScript (ES Modules, Custom Elements, Shadow DOM).
 - **Backend:** Firebase (Firestore integration ready).
-- **Forms:** Formspree for serverless form handling.
+- **Forms:** Formspree for partnership message handling.
 
-## Recent Changes (February 26, 2026)
-- **Moved Cart & Total to Header:** Relocated the cart status (count and dollar amount) to the sticky header for better visibility.
-- **Refined Affiliate Inquiry Section:** Created a more comprehensive inquiry space with a polished form and descriptive text.
-- **Updated Formspree Integration:** Ensured the correct Formspree endpoint is used for all partnership inquiries.
-- **Codebase Sync:** Latest changes committed and pushed to GitHub.
+## Recent Changes (February 27, 2026)
+- **High-Quality Imagery:** Updated `products.js` with real Unsplash images for a professional look.
+- **Navigation Refinement:** Placed the magnifying glass icon and the cart status pill side-by-side in the header.
+- **UI/UX Polishing:** Improved `product-card` styling with better spacing, animations, and typography.
+- **GitHub Sync:** All latest changes pushed to the repository.
