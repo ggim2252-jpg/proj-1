@@ -1,10 +1,9 @@
 import { products } from './products.js';
 
 const productGrid = document.querySelector('.product-grid');
-const cartCount = document.getElementById('cart-count');
-let cart = [];
 
 function renderProducts() {
+    if (!productGrid) return;
     productGrid.innerHTML = '';
     products.forEach(product => {
         const productCard = document.createElement('product-card');
@@ -16,62 +15,27 @@ function renderProducts() {
     });
 }
 
-function updateCartCount() {
-    if(cartCount){
-        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
-    }
-}
-
-function updateCartTotal() {
-    const total = cart.reduce((sum, item) => {
-        const product = products.find(p => p.id === item.id);
-        return sum + (product ? product.price * item.quantity : 0);
-    }, 0);
-    const cartTotalHeader = document.getElementById('cart-total-header');
-    if (cartTotalHeader) {
-        cartTotalHeader.textContent = `$${total.toFixed(2)}`;
-    }
-}
-
-function addToCart(productId) {
-    const productInCart = cart.find(item => item.id === productId);
-
-    if (productInCart) {
-        productInCart.quantity++;
-    } else {
-        cart.push({ id: productId, quantity: 1 });
-    }
-    updateCartCount();
-    updateCartTotal();
-    console.log('Cart:', cart);
-}
-
 class ProductCard extends HTMLElement {
     constructor() {
         super();
-        const shadow = this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' });
 
         const imageSrc = this.getAttribute('image');
         const name = this.getAttribute('name');
         const price = this.getAttribute('price');
 
-        shadow.innerHTML = `
+        this.shadowRoot.innerHTML = `
             <style>
-                :host { 
-                    display: block; 
-                    height: 100%;
-                }
+                :host { display: block; height: 100%; }
                 .product-card {
                     background: #1f1f1f;
                     border-radius: 10px;
                     overflow: hidden;
                     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                    transition: transform 0.3s;
+                    transition: transform 0.3s, border-color 0.3s;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
                     height: 100%;
-                    box-sizing: border-box;
                     border: 1px solid rgba(255,255,255,0.1);
                 }
                 .product-card:hover {
@@ -86,6 +50,9 @@ class ProductCard extends HTMLElement {
                 .card-content {
                     padding: 1.5rem;
                     text-align: left;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
                 }
                 h3 {
                     font-size: 1.2rem;
@@ -109,6 +76,7 @@ class ProductCard extends HTMLElement {
                     font-weight: 700;
                     text-transform: uppercase;
                     transition: all 0.3s;
+                    margin-top: auto; /* Pushes button to the bottom */
                 }
                 button:hover {
                     background-color: var(--accent-color);
@@ -120,15 +88,10 @@ class ProductCard extends HTMLElement {
                 <div class="card-content">
                     <h3>${name}</h3>
                     <p>${price}</p>
-                    <button>Add to Cart</button>
+                    <button>View Details</button>
                 </div>
             </div>
         `;
-
-        const button = shadow.querySelector('button');
-        button.addEventListener('click', () => {
-            addToCart(this.getAttribute('id'));
-        });
     }
 }
 
@@ -142,7 +105,7 @@ class AffiliateForm extends HTMLElement {
                     flex-direction: column;
                     gap: 1.2rem;
                     max-width: 600px;
-                    margin: 0 auto;
+                    margin: 2rem auto 0;
                     background: rgba(255, 255, 255, 0.03);
                     padding: 2.5rem;
                     border-radius: 15px;
@@ -197,5 +160,4 @@ customElements.define('affiliate-form', AffiliateForm);
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
-    updateCartCount();
 });
