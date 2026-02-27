@@ -1,30 +1,41 @@
 :root {
-    --primary-color: #1a1a1a; /* Near-black for main background */
-    --secondary-color: #2a2a2a; /* Slightly lighter shade for cards/headers */
-    --accent-color: #39ff14;  /* Vibrant Neon Green */
-    --text-color: #f0f0f0;    /* Off-white for readability */
-    --shadow-color: rgba(57, 255, 20, 0.2); /* Shadow color for the glow effect */
-    --font-family: 'Poppins', sans-serif;
+    --primary-color: #1a1a1a; /* Dark background */
+    --secondary-color: #ffffff; /* White text */
+    --accent-color: #39ff14;   /* Neon Green */
+    --accent-hover: #ff143c;   /* Neon Pink/Red for hover */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: var(--font-family);
-    margin: 0;
+    font-family: var(--font-body);
     background-color: var(--primary-color);
-    color: var(--text-color);
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY2IiIiPj4+JiYl8fHySkpKSkpPOzs7ExMTNzc3U1NTh4eHi4uKqqqqZmZnKykoAAAAASElEQVR42tVRBwEAIACD8qL+5/x7x4LDBW0gUjMJMY2kNp1/v3s2bROAF3Yk+sR2t3e3e4/vfn/p5/gmE8Ah85g/Ci8A2gTgj3cAS2rqK1eAYo/hTwAaAOc/ANdj8v0AAAAASUVORK5CYII=');
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    color: var(--secondary-color);
+    margin: 0;
+    line-height: 1.6;
 }
 
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+/* --- Navigation --- */
 header {
     background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
     padding: 1rem 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 nav {
@@ -33,106 +44,105 @@ nav {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-decoration: none;
-    text-shadow: 0 0 5px var(--accent-color);
-}
-
 .nav-links {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
+    color: var(--secondary-color);
     text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: color 0.3s, text-shadow 0.3s;
+    font-weight: 600;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
-    text-shadow: 0 0 10px var(--accent-color);
 }
 
 .nav-icons img {
     cursor: pointer;
-    transition: transform 0.3s, filter 0.3s;
+    margin-left: 1rem;
     filter: invert(1);
 }
 
-.nav-icons img:hover {
-    transform: scale(1.1);
-    filter: invert(1) drop-shadow(0 0 5px var(--accent-color));
-}
-
+/* --- Hero Section --- */
 .hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 6rem 2rem;
+    padding: 0 2rem;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin: 0 0 1rem 0;
-    font-weight: 700;
-    text-shadow: 0 0 15px rgba(0,0,0,0.5);
+.hero-text h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
 }
 
-.hero p {
+.hero-text p {
     font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
+    margin-bottom: 2rem;
 }
 
 .btn {
-    background: var(--accent-color);
+    background-color: var(--accent-color);
     color: var(--primary-color);
-    padding: 1rem 2.5rem;
     text-decoration: none;
-    font-weight: 700;
+    padding: 0.8rem 2.5rem;
     border-radius: 5px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
+    background-color: var(--accent-hover);
+    color: var(--secondary-color);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px var(--shadow-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.products h2 {
+/* --- Products Section --- */
+.products {
+    padding: 4rem 2rem;
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
 }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    padding: 2rem;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-/* This is a placeholder style for the product cards we will create */
-.product-card {
-    background-color: var(--secondary-color);
+/* --- Affiliate Section --- */
+.affiliate {
+    padding: 4rem 2rem;
+    background-color: #000;
+    text-align: center;
+}
+
+.affiliate h2 {
+    color: var(--accent-color);
+}
+
+/* --- General Styles for Web Components --- */
+product-card {
+    background: #1f1f1f;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.23);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
 }
 
-.product-card:hover {
+product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.25);
-}
-
-.modal {
-    /* Styles for modal will be updated later */
 }

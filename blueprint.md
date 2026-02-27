@@ -1,69 +1,40 @@
-# Blueprint: Modern Clothiers E-commerce Site
+# Project Overview: Modern Clothiers
 
-## 1. Project Overview
+Modern Clothiers is a premium, framework-less web application designed for a modern clothing brand. It features a vibrant, high-contrast aesthetic using neon green accents on a dark background, providing a premium and tactile feel.
 
-**Purpose:** A modern, stylish, and performant e-commerce web application for selling clothing. The goal is to create a visually appealing and user-friendly online store that is both fast and reliable, leveraging modern web technologies and Firebase for the backend.
+## Current Features & Design
 
-**Core Technologies:**
-*   **Frontend:** HTML, CSS, JavaScript (ES Modules)
-*   **Backend:** Firebase (Firestore for database)
-*   **Deployment:** Cloudflare Pages (via GitHub)
+### Aesthetics
+- **Color Palette:** Near-black backgrounds (`#1a1a1a`, `#2a2a2a`) with vibrant neon green accents (`#39ff14`).
+- **Typography:** Uses the 'Poppins' font family for a clean and professional look.
+- **Visual Effects:** Subtle noise texture on the background, multi-layered drop shadows for depth, and neon glow effects on interactive elements.
+- **Responsiveness:** Fully responsive design that adapts to various screen sizes.
 
----
+### Components
+- **Navigation Bar:** Sticky header with a glassmorphism effect (backdrop-filter: blur), featuring links for Home, Shop, Partnership, About, and Contact.
+- **Hero Section:** High-impact section with a bold headline and a "Shop Now" call-to-action button.
+- **Product Grid:** Dynamically populated grid of featured products using a custom `product-card` Web Component.
+- **Shopping Cart:** Interactive cart icon with a live count badge. (Modal functionality pending full implementation).
+- **Affiliate Program Form:** A specialized section for potential partners to apply.
+    - **Implementation:** Custom `affiliate-form` Web Component.
+    - **Integration:** Powered by Formspree (`https://formspree.io/f/mykdoonl`) for seamless form submissions.
+    - **Fields:** Full Name, Email Address, Social Media/Website URL, and a partnership message.
 
-## 2. Implemented Features & Design (v1.0)
+## Technical Implementation
 
-This section documents the state of the application as of the last update.
+### Frontend
+- **HTML5:** Semantic structure with custom elements.
+- **CSS3 (Baseline):** Container queries, CSS variables, logical properties, and modern color spaces.
+- **Modern JavaScript:** ES Modules, Custom Elements (Web Components), and Shadow DOM for encapsulation.
+- **Firebase:** Integrated for future backend functionality (Firestore).
 
-### Styles & Design (v1.0 - Initial Basic Design)
-*   **Layout:** Basic single-page layout with a header, hero section, and product grid.
-*   **Colors:** Simple black and white color scheme.
-*   **Typography:** Default browser fonts.
-*   **Components:**
-    *   Basic navigation bar.
-    *   Static hero section.
-    *   Empty product grid placeholder.
-    *   Hidden shopping cart modal.
+### External Integrations
+- **Formspree:** Used for handling affiliate application submissions.
+- **Google Fonts:** Providing the Poppins typeface.
+- **Icons8:** Providing clean, consistent iconography.
 
-### Features (v1.0 - Initial Setup)
-*   **Firebase Integration:** The project is connected to a Firebase project (`proj-1-ecomm`).
-    *   Firebase SDKs (compat version) are correctly included.
-    *   Firebase is initialized using the project's specific configuration keys.
-*   **Git & Deployment:**
-    *   Source code is managed on GitHub.
-    *   Continuous Deployment is active via Cloudflare Pages.
-
----
-
-## 3. Current Task: Redesign to "Modern & Premium" Concept
-
-This section outlines the plan for the current requested change.
-
-### Design Goals:
-The objective is to transform the basic site into a high-end, visually engaging user experience.
-
-*   **🎨 Color Palette:**
-    *   **Primary:** Switch to a **Dark Mode** theme. The main background will be a near-black color (`#1a1a1a`).
-    *   **Accent:** Use a vibrant **Neon Green** (`#39ff14` or similar) as a striking accent color for buttons, links, and interactive highlights. This will create a strong contrast against the dark background.
-    *   **Text:** Use off-white/light-gray for body text for comfortable reading on a dark background.
-
-*   **✍️ Typography:**
-    *   Introduce modern, web-friendly fonts (e.g., from Google Fonts).
-    *   Use a stylish, bold font for headings (Hero text, section titles).
-    *   Use a clean, highly readable font for paragraphs and other text.
-
-*   **✨ Visual Effects:**
-    *   **Background Texture:** Apply a subtle noise or grain texture to the main background to add a tactile, premium feel and prevent flat, boring black.
-    *   **Depth & Shadow:** Implement multi-layered drop shadows on elements like product cards to create a sense of depth and make them appear "lifted" off the page.
-    *   **Glow Effect:** Add an interactive "glow" effect to buttons and other key elements. When hovered, they will emit a soft light in the accent color, enhancing user feedback.
-
-### Actionable Steps:
-1.  **Update `style.css`:**
-    *   Change the body background color and text colors to implement the dark theme.
-    *   Create CSS variables for the new color palette for easy management.
-    *   Update button, link, and other element styles to use the new neon accent color.
-    *   Implement the `box-shadow` for cards and the `text-shadow` or `box-shadow` glow effect on interactive elements.
-    *   (Optional) Find a suitable subtle noise background image or generate one with CSS.
-2.  **Update `index.html`:**
-    *   Add `<link>` tags in the `<head>` to import the chosen fonts from Google Fonts.
-3.  **Commit & Deploy:** Push the updated files to GitHub to trigger a new deployment on Cloudflare Pages.
+## Recent Changes (February 26, 2026)
+- **Added Affiliate Program Form:** Created the `affiliate-form` Web Component and integrated it with Formspree endpoint `https://formspree.io/f/mykdoonl`.
+- **Navigation Update:** Added a "Partnership" link to the main navigation that scrolls to the affiliate section.
+- **Cart UI Enhancement:** Implemented a persistent cart count badge on the navigation bar.
+- **Codebase Sync:** Uploaded all project files to the GitHub repository at `https://github.com/ggim2252-jpg/proj-1`.
