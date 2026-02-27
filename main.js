@@ -22,6 +22,17 @@ function updateCartCount() {
     }
 }
 
+function updateCartTotal() {
+    const total = cart.reduce((sum, item) => {
+        const product = products.find(p => p.id === item.id);
+        return sum + (product ? product.price * item.quantity : 0);
+    }, 0);
+    const cartTotalHeader = document.getElementById('cart-total-header');
+    if (cartTotalHeader) {
+        cartTotalHeader.textContent = `$${total.toFixed(2)}`;
+    }
+}
+
 function addToCart(productId) {
     const productInCart = cart.find(item => item.id === productId);
 
@@ -31,6 +42,7 @@ function addToCart(productId) {
         cart.push({ id: productId, quantity: 1 });
     }
     updateCartCount();
+    updateCartTotal();
     console.log('Cart:', cart);
 }
 
@@ -128,38 +140,53 @@ class AffiliateForm extends HTMLElement {
                 form {
                     display: flex;
                     flex-direction: column;
-                    gap: 1rem;
-                    max-width: 500px;
-                    margin: 2rem auto;
+                    gap: 1.2rem;
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background: rgba(255, 255, 255, 0.03);
+                    padding: 2.5rem;
+                    border-radius: 15px;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
                 }
-                input {
-                    background: #2a2a2a;
-                    border: 1px solid #444;
+                input, textarea {
+                    background: #1a1a1a;
+                    border: 1px solid #333;
                     color: #fff;
-                    padding: 0.8rem;
-                    border-radius: 5px;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    font-family: inherit;
+                    font-size: 1rem;
+                }
+                input:focus, textarea:focus {
+                    outline: none;
+                    border-color: var(--accent-color);
+                    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
                 }
                 button {
                     background-color: var(--accent-color);
                     color: var(--primary-color);
                     border: none;
-                    padding: 1rem;
-                    border-radius: 5px;
+                    padding: 1.2rem;
+                    border-radius: 8px;
                     cursor: pointer;
                     font-weight: 700;
                     text-transform: uppercase;
+                    letter-spacing: 1px;
                     transition: all 0.3s;
+                    margin-top: 1rem;
                 }
                 button:hover {
                     background-color: var(--accent-hover);
                     color: var(--secondary-color);
+                    transform: translateY(-2px);
                 }
             </style>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="text" name="social_media" placeholder="Your Social Media Handle (e.g., @yourstyle)" required>
-                <button type="submit">Apply Now</button>
+            <form action="https://formspree.io/f/mykdoonl" method="POST">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="text" name="subject" placeholder="Inquiry Subject" required>
+                <textarea name="message" rows="5" placeholder="Your Message / Partnership Proposal" required></textarea>
+                <button type="submit">Send Inquiry</button>
             </form>
         `;
     }
