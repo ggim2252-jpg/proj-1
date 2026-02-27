@@ -19,7 +19,8 @@ Modern Clothiers is a premium, framework-less web application designed for a mod
     - Features include item removal, real-time total calculation, and a checkout button.
 - **Product Grid:**
     - Custom `product-card` Web Components showcasing premium clothes and shoes.
-    - Prices are set within a competitive range of $50.00 to $80.00.
+    - **No Null Values:** All components use `connectedCallback` to ensure data is properly rendered from attributes.
+    - **Pricing:** All items are priced between $50.00 and $80.00.
 - **Product Filtering (Search):**
     - Functional search feature that filters the product grid in real-time.
 - **Affiliate Inquiry Space:**
@@ -38,7 +39,8 @@ Modern Clothiers is a premium, framework-less web application designed for a mod
     - **Unsplash:** For high-quality background and product imagery.
 
 ## Recent Changes (February 27, 2026)
-- **Product List Update:** Expanded and refined the product list to include 12 premium items (clothes and shoes) with no missing data.
-- **Price Adjustment:** All product prices have been set between $50.00 and $80.00 as requested.
-- **Visual Refinement:** Ensured all product images are high-resolution and fit the brand aesthetic perfectly.
+- **Fixed 'null' rendering:** Refactored `ProductCard` to use `connectedCallback`, ensuring attributes are loaded before rendering.
+- **Data Cleanup:** Verified `products.js` has no missing images or prices.
+- **Price Range Compliance:** Set all product prices within the requested $50-$80 range.
+- **Visual Refinement:** Updated product imagery to high-quality clothes and shoes.
 - **GitHub Sync:** All latest changes committed and pushed to the repository.

@@ -126,10 +126,12 @@ class ProductCard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+    }
 
-        const imageSrc = this.getAttribute('image');
-        const name = this.getAttribute('name');
-        const price = this.getAttribute('price');
+    connectedCallback() {
+        const imageSrc = this.getAttribute('image') || '';
+        const name = this.getAttribute('name') || 'Product';
+        const price = this.getAttribute('price') || '$0.00';
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -148,7 +150,7 @@ class ProductCard extends HTMLElement {
                 }
                 .product-card:hover {
                     transform: translateY(-10px);
-                    border-color: var(--accent-color, #25ff14);
+                    border-color: var(--accent-color);
                     box-shadow: 0 20px 40px rgba(37, 255, 20, 0.15);
                 }
                 .image-container {
@@ -179,15 +181,15 @@ class ProductCard extends HTMLElement {
                     letter-spacing: 0.5px;
                 }
                 p {
-                    color: var(--accent-color, #25ff14);
+                    color: var(--accent-color);
                     font-weight: 800;
                     font-size: 1.25rem;
                     margin: 0 0 1.5rem 0;
                 }
                 button {
                     background-color: transparent;
-                    color: var(--accent-color, #25ff14);
-                    border: 2px solid var(--accent-color, #25ff14);
+                    color: var(--accent-color);
+                    border: 2px solid var(--accent-color);
                     width: 100%;
                     padding: 0.8rem;
                     border-radius: 8px;
@@ -199,7 +201,7 @@ class ProductCard extends HTMLElement {
                     margin-top: auto;
                 }
                 button:hover {
-                    background-color: var(--accent-color, #25ff14);
+                    background-color: var(--accent-color);
                     color: #000;
                     box-shadow: 0 0 15px rgba(37, 255, 20, 0.4);
                 }
@@ -217,7 +219,7 @@ class ProductCard extends HTMLElement {
         `;
 
         this.shadowRoot.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-            const productId = this.dataset.productId || this.getAttribute('data-product-id');
+            const productId = this.getAttribute('id') || this.dataset.productId;
             addToCart(productId);
         });
     }
