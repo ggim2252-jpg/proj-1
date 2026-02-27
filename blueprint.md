@@ -1,13 +1,14 @@
 # Project Overview: Modern Clothiers
 
-Modern Clothiers is a premium, framework-less web application designed for a modern clothing brand. It features a bold, high-contrast aesthetic with neon green accents on a dark background.
+Modern Clothiers is a premium, framework-less web application designed for a modern clothing brand. It features a bold, high-contrast aesthetic with neon green accents on a dark, immersive background.
 
 ## Current Features & Design
 
 ### Aesthetics
 - **Theme:** Dark Mode with Neon Green (`#25ff14`) accents.
+- **Background:** Immersive fixed background image with a dark overlay for a premium feel and optimal readability.
 - **Typography:** 'Montserrat' for headings and 'Poppins' for body text.
-- **Visuals:** High-resolution product images, glassmorphism UI elements, and smooth animations.
+- **Visuals:** High-resolution product images (clothes and shoes), glassmorphism UI elements, and smooth hover animations.
 
 ### Components
 - **Navigation Bar:** 
@@ -31,9 +32,10 @@ Modern Clothiers is a premium, framework-less web application designed for a mod
     - **Disqus:** For community comments.
     - **Formspree:** For partnership inquiry handling.
     - **Icons8:** For iconography.
+    - **Unsplash:** For high-quality background and product imagery.
 
 ## Recent Changes (February 27, 2026)
-- **Implemented Cart Modal:** Added full functionality to view and manage cart items within a sleek modal.
-- **Search Capability:** Enabled product filtering via the search icon.
-- **Added Footer:** Designed and implemented a professional footer section.
+- **Enhanced Visuals:** Added a stylish fixed background image to the entire site.
+- **Product Update:** Refined the product list to focus on high-end clothes and shoes with professional photography.
+- **UI/UX Polishing:** Improved overall contrast and readability across all sections.
 - **GitHub Sync:** All latest changes committed and pushed to the repository.
