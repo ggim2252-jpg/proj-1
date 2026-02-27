@@ -181,7 +181,7 @@ class AffiliateForm extends HTMLElement {
                     transform: translateY(-2px);
                 }
             </style>
-            <form action="https://formspree.io/f/mykdoonl" method="POST">
+            <form action="https://formspree.io/f/mbdabjdy" method="POST">
                 <input type="text" name="name" placeholder="Your Full Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
                 <input type="text" name="subject" placeholder="Inquiry Subject" required>
