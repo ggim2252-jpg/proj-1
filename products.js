@@ -19,15 +19,15 @@ export const products = [
     },
     {
         id: 'p4',
-        name: 'Distressed Slim Jeans',
+        name: 'Raw Selvedge Denim',
         price: 55.00,
         image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p5',
-        name: 'Street Stealth Boots',
+        name: 'Essential White Kicks',
         price: 80.00,
-        image: 'https://images.unsplash.com/photo-1520639889313-7272175b1c39?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p6',
@@ -49,26 +49,14 @@ export const products = [
     },
     {
         id: 'p9',
-        name: 'Vintage Denim Shirt',
+        name: 'Minimalist Cotton Shirt',
         price: 58.00,
-        image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80'
+        image: 'https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: 'p10',
         name: 'Suede Street Loafers',
         price: 62.00,
         image: 'https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'p11',
-        name: 'Padded Winter Vest',
-        price: 77.00,
-        image: 'https://images.unsplash.com/photo-1591047139262-49da39000cc1?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'p12',
-        name: 'Lightweight Running Shorts',
-        price: 52.00,
-        image: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=80'
     }
 ];

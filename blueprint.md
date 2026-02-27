@@ -6,39 +6,25 @@ Modern Clothiers is a premium, framework-less web application designed for a mod
 
 ### Aesthetics
 - **Theme:** Dark Mode with Neon Green (`#25ff14`) accents.
-- **Face-Free Aesthetic:** All imagery (product and background) focuses exclusively on clothing, footwear, and fashion textures, with no human faces shown for a clean, brand-centric look.
-- **Background:** Immersive fixed background image (fabric/fashion texture) with a dark overlay for a premium feel.
+- **Face-Free Aesthetic:** Focuses exclusively on clothing and footwear. Product imagery and the site-wide fixed background are strictly face-free for a minimalist look.
+- **Hero Section:** Features a stylish back-view of an individual wearing brand apparel, set against a fixed background for a parallax-like feel.
+- **Scrolling Effect:** Sections (Products, Affiliate, Comments) feature a semi-transparent background with a glassmorphism blur, allowing the fixed site-wide background to show through as the user scrolls.
 - **Typography:** 'Montserrat' for headings and 'Poppins' for body text.
-- **Visuals:** High-resolution product images, glassmorphism UI elements, and smooth hover animations.
 
 ### Components
-- **Navigation Bar:** 
-    - Sticky header with links (Home, Shop, Inquiry, About, Contact).
-    - **Integrated Search & Cart:** Features a search icon and a sleek cart status pill (count and total price).
-- **Shopping Cart Modal:**
-    - Interactive modal that displays all items added to the cart.
-    - Features include item removal, real-time total calculation, and a checkout button.
-- **Product Grid:**
-    - Custom `product-card` Web Components showcasing premium clothes and shoes without human models.
-    - All items are priced between $50.00 and $80.00.
-- **Product Filtering (Search):**
-    - Functional search feature that filters the product grid in real-time.
-- **Affiliate Inquiry Space:**
-    - Dedicated partnership section with a professional inquiry form.
-- **Customer Feedback (Disqus):**
-    - Integrated Disqus comment thread at the bottom of the page.
-- **Professional Footer:**
-    - Comprehensive footer with about text, quick links, and contact information.
+- **Navigation Bar:** Sticky header with integrated search and a sleek cart status pill.
+- **Shopping Cart Modal:** Fully functional cart management system.
+- **Product Grid:** 10 premium items (clothes and shoes) priced between $50.00 and $80.00.
+- **Customer Feedback:** Integrated Disqus comment thread.
+- **Professional Footer:** Comprehensive site information and links.
 
 ## Technical Implementation
 - **Frontend:** HTML5, CSS3, Modern JavaScript (ES Modules, Custom Elements, Shadow DOM).
-- **External Integrations:**
-    - **Disqus:** For community comments.
-    - **Formspree:** For partnership inquiry handling.
-    - **Icons8:** For iconography.
-    - **Unsplash:** For high-quality background and product imagery.
+- **Attributes Handling:** Refactored `ProductCard` to use `connectedCallback` for reliable data rendering and to prevent 'null' values.
+- **External Integrations:** Disqus, Formspree, Icons8, Unsplash.
 
 ## Recent Changes (February 27, 2026)
-- **Face-Free Imagery:** Replaced all product and background images to exclude human faces, focusing purely on clothes and shoes.
-- **Background & Hero Update:** Updated site-wide background and hero section with brand-consistent fashion textures.
-- **Codebase sync:** All changes pushed to GitHub.
+- **Imagery Refinement:** Replaced images 4, 5, and 9 with product-only shots. Removed redundant items 11 and 12.
+- **Hero Update:** Set the main hero background to a high-quality back-view fashion photo.
+- **Scrolling Effect:** Implemented a fixed background with transparent sections to create a dynamic scrolling experience.
+- **GitHub Sync:** All latest changes pushed to the repository.

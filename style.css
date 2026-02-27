@@ -149,8 +149,11 @@ nav {
     justify-content: center;
     text-align: center;
     padding: 0 2rem;
-    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1551232864-3f0890e58e35?q=80&w=2163&auto=format&fit=crop') no-repeat center center/cover;
+    /* 인물의 뒷모습 패션 사진 적용 */
+    background: linear-gradient(rgba(10, 10, 10, 0.3), rgba(10, 10, 10, 0.6)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    background-attachment: fixed;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
 }
 
 .hero-text h1 {
@@ -192,6 +195,9 @@ nav {
 .products, .affiliate {
     padding: 6rem 5%;
     text-align: center;
+    /* 스크롤 시 배경이 비쳐 보이도록 투명도 조정 */
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(5px);
 }
 
 .products h2, .affiliate h2 {
